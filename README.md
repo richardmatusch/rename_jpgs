@@ -1,7 +1,5 @@
 # **rename_jpgs**
 
-This is a simple script that renames scanned .jpg's based on text in images read by ocr.
-
 ## **Overview:**
 
 There are 2 values that the script is extracting and using for renaming files:
