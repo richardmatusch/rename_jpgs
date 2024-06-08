@@ -6,10 +6,12 @@ import easyocr
 reader = easyocr.Reader(['en'])
 # getting all .jpg files in the current directory
 files = [f for f in os.listdir('.') if f.lower().endswith('.jpg')]
+no_of_files = len(files)
 # dictionary for handling duplicates while renaming
 names = {}
-# variable to keep track of renamed files
-renamed_files = 0
+# variables to keep track of success rate
+correctly_renamed = 0
+not_correctly_renamed = []
 
 def extract_order_number(string, matched_order_number):
     """extracting the order number from the string in a format '000XXXXX' and adding it to matched_order_number variable.
@@ -22,14 +24,14 @@ def extract_order_number(string, matched_order_number):
     
 def extract_order_name(string, matched_order_name):
     """extracting the name of the ordered product and adding it into extracted_data dictionary. in our case, this is a chemical mixture..."""
-    match = re.search(r'([2348][0-9O]{2}[A-Z]{2,10})', string)
+    match = re.search(r'([2348][0-9O]{2}[CPTD][A-Z]{1,10})', string)
     if match and matched_order_name == "":
         # replacing potential 'O's with '0's in the second and third char. of the match... OCR sometimes mistakes 0 for O...
         matched_order_name = "_" + match.group(1)[0:3].replace('O', '0') + match.group(1)[3:]
     return matched_order_name
 
 def rename_files():
-    global renamed_files
+    global correctly_renamed
     for file in files:
         strings = reader.readtext(file, detail=0, min_size=160)
 
@@ -51,11 +53,16 @@ def rename_files():
 
         # renaming files
         os.rename(file, new_name)
-        renamed_files += 1
+        # handling correctly and incorrectly renamed files for report at the end
+        if len(new_name) >= 15 and "_" in new_name: 
+            correctly_renamed += 1
+        else:
+            not_correctly_renamed.append(new_name)
+
         print(f"renamed '{file}' to '{new_name}'")
 
 rename_files()
 
-print(f"\ntotal jpg's in the directory: {len(files)}\nrenamed: {renamed_files}\nnot renamed: {len(files) - renamed_files}")
+print(f"\ntotal jpg's in the directory: {no_of_files}\ncorrectly renamed: {correctly_renamed}\nnot renamed correctly: {no_of_files - correctly_renamed} ({not_correctly_renamed})\nsuccess rate: {(correctly_renamed/no_of_files)*100}%")
 # wait for user input before exiting
 input("\npress enter to exit...")
