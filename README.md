@@ -37,11 +37,12 @@ Bugs that I've noticed:
    This is in most cases due to physical damage of the documents itself (this is production environment - there can be stains and various damage occuring...).
    I am sure there is some optimisation that can be done to improve the success rate here, but for now this bug is the least concerning one.
 
-~~2. Some files were renamed to '12345_403RB.jpg'.
+2. ~~Some files were renamed to '12345_403RB.jpg'.
    The '403RB' part here is a concern because it's wrong. This is some unrelated internal code that is not the order name.
-   This bug is caused by not specific enough regex implemented in the code and needs to be fixed.~~ This should be fixed now.
+   This bug is caused by not specific enough regex implemented in the code and needs to be fixed.~~
+   - This should be fixed now.
 
-3. Traceback error.
+4. Traceback error.
    This occured only 3-5 times in over 2500 files but it is most concerning because it stops program from running.
    I cannot really recreate it (for now) therefore I do not really know what is causing it.
    I will try to implement some sort of try/except code to circumvent this error.
