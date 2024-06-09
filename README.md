@@ -29,20 +29,19 @@ I used this script at work over the course of 2 days and renamed over 2500 files
 
 Bugs that I've noticed:
 
-1. Most common bug was that the ocr failed to recognise either order number, or order name, or both. This lead to results like:
-   - '34822.jpg'
-   - '_812CMBLSZ.jpg'
-   - '.jpg'
-     
-   This is in most cases due to physical damage of the documents itself (this is production environment - there can be stains and various damage occuring...).
-   I am sure there is some optimisation that can be done to improve the success rate here, but for now this bug is the least concerning one.
+1. ~~Most common bug was that the ocr failed to recognise either order number, or order name, or both. This lead to results like: '34822.jpg', '_812CMBLSZ.jpg', '.jpg'~~
+   ~~This is in some cases due to physical damage of the documents itself (this is production environment - there can be stains and various damage occuring...).
+   I am sure there is some optimisation that can be done to improve the success rate here, but for now this bug is the least concerning one.~~
 
-2. ~~Some files were renamed to '12345_403RB.jpg'.
+   - Fixed. (Removed min_size parameter from .readtext method. I initially had this set to 160 hoping this would speed up the process of searching the file, but it did not make significant difference. After I removed it, in testing it read every file correctly.)
+
+3. ~~Some files were renamed to '12345_403RB.jpg'.
    The '403RB' part here is a concern because it's wrong. This is some unrelated internal code that is not the order name.
    This bug is caused by not specific enough regex implemented in the code and needs to be fixed.~~
-   - This should be fixed now.
+   
+   - Fixed. (Updated regex.)
 
-4. Traceback error.
+5. Traceback error.
    This occured only 3-5 times in over 2500 files but it is most concerning because it stops program from running.
    I cannot really recreate it (for now) therefore I do not really know what is causing it.
    I will try to implement some sort of try/except code to circumvent this error.
