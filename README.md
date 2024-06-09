@@ -4,10 +4,10 @@
 
 There are 2 values that the script is extracting and using for renaming files:
 
-- **Order number** in the format: **`00034822`**
-- **Order name** in the format: **`812CMBLSZ`**
+- **Order number** in the format: **`00012345`**
+- **Order name** in the format: **`412ABCDEF`**
   
-Both of these values can be found (in ideal scenario) twice in the image. They are then concatenated and scanned file is renamed in this case to: **'34822_812CMBLSZ.jpg'**
+Both of these values can be found (in ideal scenario) twice in the image. They are then concatenated and scanned file is renamed in this case to: **'12345_412ABCDEF.jpg'**
 
 
 ## **Installation:**
@@ -29,7 +29,7 @@ I used this script at work over the course of 2 days and renamed over 2500 files
 
 Bugs that I've noticed:
 
-1. ~~Most common bug was that the ocr failed to recognise either order number, or order name, or both. This lead to results like: '34822.jpg', '_812CMBLSZ.jpg', '.jpg'~~
+1. ~~Most common bug was that the ocr failed to recognise either order number, or order name, or both. This lead to results like: '12345.jpg', '_412ABCDEF.jpg', '.jpg'~~
    ~~This is in some cases due to physical damage of the documents itself (this is production environment - there can be stains and various damage occuring...).
    I am sure there is some optimisation that can be done to improve the success rate here, but for now this bug is the least concerning one.~~
 
