@@ -33,7 +33,7 @@ def extract_order_name(string, matched_order_name):
 def rename_files():
     global correctly_renamed
     for file in files:
-        strings = reader.readtext(file, detail=0, min_size=160)
+        strings = reader.readtext(file, detail=0)
 
         matched_order_number = ""
         matched_order_name = ""
@@ -63,6 +63,6 @@ def rename_files():
 
 rename_files()
 
-print(f"\ntotal jpg's in the directory: {no_of_files}\ncorrectly renamed: {correctly_renamed}\nnot renamed correctly: {no_of_files - correctly_renamed} ({not_correctly_renamed})\nsuccess rate: {(correctly_renamed/no_of_files)*100}%")
+print(f"\ntotal jpg's in the directory: {no_of_files}\ncorrectly renamed: {correctly_renamed}\nnot renamed correctly: {no_of_files - correctly_renamed}, {not_correctly_renamed}\nsuccess rate: {round((correctly_renamed/no_of_files)*100, 2)}%")
 # wait for user input before exiting
 input("\npress enter to exit...")
