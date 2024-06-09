@@ -33,7 +33,7 @@ Bugs that I've noticed:
    ~~This is in some cases due to physical damage of the documents itself (this is production environment - there can be stains and various damage occuring...).
    I am sure there is some optimisation that can be done to improve the success rate here, but for now this bug is the least concerning one.~~
 
-   - Fixed. (Removed min_size parameter from .readtext method. I initially had this set to 160 hoping this would speed up the process of searching the file, but it did not make significant difference. After I removed it, in testing it read every file correctly.)
+   - Fixed. (Removed min_size parameter from .readtext method. I initially had this set to 160 hoping this would speed up the process of scanning the file, but it did not make significant difference. After I removed it, in testing it read every file correctly.)
 
 3. ~~Some files were renamed to '12345_403RB.jpg'.
    The '403RB' part here is a concern because it's wrong. This is some unrelated internal code that is not the order name.
