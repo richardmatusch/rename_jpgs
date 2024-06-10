@@ -23,9 +23,9 @@ To use this script, you need to have Python installed along with the following d
 - run the script using Python
 - the script will process all .jpg files in the directory and rename them based on the extracted text
 
-## **Observations and bugs after first testing:**
+## **Observations and bugs:**
 
-I used this script at work over the course of 2 days and renamed over 2500 files. Most of the files (my subjective estimate more than 90%) were renamed correctly.
+I used this script at work over the course of 3 days and renamed over 4000 files. With most recent update there is only about 2% of incorrectly renamed files.
 
 Bugs that I've noticed:
 
@@ -33,7 +33,7 @@ Bugs that I've noticed:
    ~~This is in some cases due to physical damage of the documents itself (this is production environment - there can be stains and various damage occuring...).
    I am sure there is some optimisation that can be done to improve the success rate here, but for now this bug is the least concerning one.~~
 
-   - Fixed. (Removed min_size parameter from .readtext method. I initially had this set to 160 hoping this would speed up the process of scanning the file, but it did not make significant difference. After I removed it, in testing it read every file correctly.)
+   - Fixed. (Adjusted min_size parameter from 160 to 100.)
 
 3. ~~Some files were renamed to '12345_403RB.jpg'.
    The '403RB' part here is a concern because it's wrong. This is some unrelated internal code that is not the order name.
