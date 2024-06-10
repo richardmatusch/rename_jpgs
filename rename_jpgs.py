@@ -23,9 +23,9 @@ def extract_order_number(string, matched_order_number):
     
 def extract_order_name(string, matched_order_name):
     """searching for the order name and returning it"""
-    match = re.search(r'([2348][0-9O]{2}[CPTD][A-Z]{1,10})', string)
+    match = re.search(r'20[01]DB|[2348][0-9O]{2}[CPTD][A-Z]{5,10}', string)
     if match and matched_order_name == "":
-        matched_order_name = "_" + match.group(1)[0:3].replace('O', '0') + match.group(1)[3:]
+        matched_order_name = "_" + match.group(0)[0:3].replace('O', '0') + match.group(0)[3:]
     return matched_order_name # OCR sometimes mistakes 0 for O...
 
 def rename_files():
@@ -33,7 +33,7 @@ def rename_files():
     global correctly_renamed
 
     for file in files:
-        strings = reader.readtext(file, detail=0)
+        strings = reader.readtext(file, detail=0, min_size=100)
 
         matched_order_number = ""
         matched_order_name = ""
