@@ -25,7 +25,7 @@ To use this script, you need to have Python installed along with the following d
 
 ## **Observations and bugs:**
 
-I used this script at work over the course of 3 days and renamed over 4000 files. With most recent update there is only about 2% of incorrectly renamed files.
+I am using this script at work almost every day. With most recent update there is only about 1% of incorrectly renamed files.
 
 Bugs that I've noticed:
 
