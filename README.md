@@ -33,7 +33,7 @@ Bugs that I've noticed:
    ~~This is in some cases due to physical damage of the documents itself (this is production environment - there can be stains and various damage occuring...).
    I am sure there is some optimisation that can be done to improve the success rate here, but for now this bug is the least concerning one.~~
 
-   - Fixed. (Adjusted min_size parameter from 160 to 100.)
+   - Fixed. (Removed min_size parameter.)
 
 3. ~~Some files were renamed to '12345_403RB.jpg'.
    The '403RB' part here is a concern because it's wrong. This is some unrelated internal code that is not the order name.
@@ -45,6 +45,8 @@ Bugs that I've noticed:
    This occured only 3-5 times in over 2500 files but it is most concerning because it stops program from running.
    I cannot really recreate it (for now) therefore I do not really know what is causing it.
    I will try to implement some sort of try/except code to circumvent this error.
+
+   - This is still occuring and I still cannot recreate the issue. I think it has something to do with file names before renaming... It happens rarely so the script is usable with almost zero issues, but it bugs me a lot.
 
 
 
