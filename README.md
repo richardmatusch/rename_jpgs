@@ -16,10 +16,7 @@ Script only runs in terminal and looks like this:
 
 ## **Installation:**
 
-To use this script, you need to have Python installed along with the following dependencies:
-- `os`
-- `re`
-- `easyocr`
+To use this script, you need to have Python installed along with EasyOCR. You can find it here: https://pypi.org/project/easyocr/
 
 ## **Usage:**
 
@@ -27,7 +24,7 @@ Place the script in the directory containing your .jpg files and run it. The scr
 
 ## **Observations and bugs:**
 
-I used this script at work extensively. With most recent update there is only about 1% of incorrectly renamed files.
+I used this script at work extensively. With most recent update there is only about 1% of incompletely renamed files.
 
 Bugs that I've noticed:
 
