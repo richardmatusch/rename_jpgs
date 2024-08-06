@@ -9,10 +9,10 @@ reader = easyocr.Reader(['en'])
 files = [f for f in os.listdir('.') if f.lower().endswith('.jpg')]
 no_of_files = len(files)
 
-# variables for handling duplicates and keeping track of correctly renamed files
+# variables for handling duplicates and keeping track of fully renamed files
 names = {}
-correctly_renamed = 0
-not_correctly_renamed = []
+fully_renamed = 0
+not_fully_renamed = []
 
 def extract_order_number(string, matched_order_number):
     """searching for the order number in a format '000XXXXX' and returning only last 5 digits"""
@@ -30,10 +30,10 @@ def extract_order_name(string, matched_order_name):
 
 def rename_files():
     """looping through the current dictionary, using ocr on .jpg files and using previous two functions to search for relevant data for file renaming"""
-    global correctly_renamed
+    global fully_renamed
 
     for file in files:
-        strings = reader.readtext(file, detail=0, min_size=100)
+        strings = reader.readtext(file, detail=0)
 
         matched_order_number = ""
         matched_order_name = ""
@@ -55,13 +55,13 @@ def rename_files():
         os.rename(file, new_name)
         # handling correctly and incorrectly renamed files for report at the end
         if len(new_name) >= 15 and "_" in new_name: 
-            correctly_renamed += 1
+            fully_renamed += 1
         else:
-            not_correctly_renamed.append(new_name)
+            not_fully_renamed.append(new_name)
         print(f"renamed '{file}' to '{new_name}'")
 
 rename_files()
 
-print(f"\ntotal jpg's in the directory: {no_of_files}\ncorrectly renamed: {correctly_renamed}\nnot renamed correctly: {no_of_files - correctly_renamed}, {not_correctly_renamed}\nsuccess rate: {round((correctly_renamed/no_of_files)*100, 2)}%")
+print(f"\ntotal jpg's in the directory: {no_of_files}\nfully renamed: {fully_renamed}\nnot fully renamed: {no_of_files - fully_renamed}, {not_fully_renamed}\nsuccess rate: {round((fully_renamed/no_of_files)*100, 2)}%")
 # prompt to keep the script running till user exits
 input("\npress enter to exit...")
