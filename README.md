@@ -9,6 +9,10 @@ There are 2 values that the script is extracting and using for renaming files:
   
 Both of these values can be found (in ideal scenario) twice in the image. They are then concatenated and scanned file is renamed in this case to: **'12345_412ABCDEF.jpg'**
 
+Script only runs in terminal and looks like this:
+
+![Screenshot 2024-08-06 084339](https://github.com/user-attachments/assets/a6870873-fa13-49bc-ad17-0d08d4e517ab)
+
 
 ## **Installation:**
 
@@ -19,13 +23,11 @@ To use this script, you need to have Python installed along with the following d
 
 ## **Usage:**
 
-- place the script in the directory containing your .jpg files
-- run the script using Python
-- the script will process all .jpg files in the directory and rename them based on the extracted text
+Place the script in the directory containing your .jpg files and run it. The script will then process all .jpg files in the directory and rename them based on the extracted text
 
 ## **Observations and bugs:**
 
-I am using this script at work almost every day. With most recent update there is only about 1% of incorrectly renamed files.
+I used this script at work extensively. With most recent update there is only about 1% of incorrectly renamed files.
 
 Bugs that I've noticed:
 
@@ -42,11 +44,9 @@ Bugs that I've noticed:
    - Fixed. (Updated regex.)
 
 5. Traceback error.
-   This occured only 3-5 times in over 2500 files but it is most concerning because it stops program from running.
-   I cannot really recreate it (for now) therefore I do not really know what is causing it.
-   I will try to implement some sort of try/except code to circumvent this error.
-
-   - This is still occuring and I still cannot recreate the issue. I think it has something to do with file names before renaming... It happens rarely so the script is usable with almost zero issues, but it bugs me a lot.
+   This occured only 3-5 times in over 2500 files but it is concerning because it stops program from running.
+   I can't really recreate it, therefore I don't really know what is causing it but I think it has something to do with file names before renaming.
+   I observed this issue only when renaming large amounts of files with multiple instances of the script running. In day to day use the issue does not occur.
 
 
 
